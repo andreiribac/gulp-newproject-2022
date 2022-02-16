@@ -1,0 +1,20 @@
+@import "fonts.scss";
+
+*,
+*:before,
+*:after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Montserrat";
+}
+body {
+	color: white;
+	background: black url(@img/ava_001.jpg) center center/contain no-repeat;
+}
+
+.img-img {
+	display: block;
+	width: 110px;
+	height: 110px;
+}
