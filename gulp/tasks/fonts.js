@@ -5,6 +5,7 @@ import ttf2woff2 from 'gulp-ttf2woff2';
 export const otfToTtf = () => {
 	// ищем файлы шрифтов .otf
 	return app.gulp.src(`${app.path.srcFolder}/fonts/*.otf`, {})
+		// Указывает на возникающую ошибку в этом типе файла
 		.pipe(app.plugins.plumber(
 			app.plugins.notify.onError({
 				title: 'FONTS',
@@ -22,6 +23,7 @@ export const otfToTtf = () => {
 export const ttfToWoff = () => {
 	// ищем файлы шрифтов .ttf
 	return app.gulp.src(`${app.path.srcFolder}/fonts/*.ttf`, {})
+		// Указывает на возникающую ошибку в этом типе файла
 		.pipe(app.plugins.plumber(
 			app.plugins.notify.onError({
 				title: 'FONTS',
