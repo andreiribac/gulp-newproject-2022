@@ -25,6 +25,8 @@ import { images } from './gulp/tasks/images.js';
 import { otfToTtf, ttfToWoff, fontsStyle } from './gulp/tasks/fonts.js';
 import { svgSpriteFunc } from './gulp/tasks/svgSprite.js';
 import { zip } from './gulp/tasks/zip.js';
+import { lang_html } from "./gulp/tasks/lang_html.js";
+import { copy_xml } from "./gulp/tasks/copy_xml.js";
 
 // Наблюдать за изменениями в файлах
 function watcher() {
@@ -33,6 +35,9 @@ function watcher() {
 	gulp.watch(path.watch.scss, scss);
 	gulp.watch(path.watch.js, js);
 	gulp.watch(path.watch.images, images);
+
+	gulp.watch(path.watch.lang_html, lang_html);
+	gulp.watch(path.watch.xml, copy_xml);
 } 
 
 export { svgSpriteFunc };
@@ -41,7 +46,7 @@ export { svgSpriteFunc };
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontsStyle);
 
 // Основные задачи
-const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, js, images, svgSpriteFunc ));
+const mainTasks = gulp.series(fonts, gulp.parallel(copy, html, scss, js, images, svgSpriteFunc, lang_html, copy_xml));
 
 // Построение сценариев выполнения задач
 const dev = gulp.series(reset, mainTasks, gulp.parallel(watcher, server));
